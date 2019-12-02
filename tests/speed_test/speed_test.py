@@ -12,7 +12,7 @@ YOU_TOKEN_TO_ME = "YouTokenToMe"
 SENTENCE_PIECE = "SentencePiece"
 FAST_BPE = "fastBPE"
 
-PATH_TO_FASTBPE = "./fast"
+PATH_TO_FASTBPE = "~/fastBPE/fast"
 
 
 class SentencePieceInterface:
