@@ -27,6 +27,7 @@ using std::string;
 using std::vector;
 using std::unordered_set;
 
+// id化的token序列
 struct VectorSegment {
   constexpr static uint64_t MOD = 2032191299;
   constexpr static uint64_t P = 726328703;
@@ -58,6 +59,8 @@ struct VectorSegment {
 
 }  // namespace vkcom
 
+
+//??
 namespace std {
 template<>
 struct hash<vkcom::VectorSegment> {
@@ -67,6 +70,7 @@ struct hash<vkcom::VectorSegment> {
 
 namespace vkcom {
 
+// fread read file
 Status fast_read_file_utf8(const string &file_name, string *file_content) {
   static const int buf_size = 1000000;
   *file_content = "";
@@ -86,6 +90,7 @@ Status fast_read_file_utf8(const string &file_name, string *file_content) {
   }
 }
 
+//
 string token2word(const vector<uint32_t> &source,
                   const ska::flat_hash_map<uint32_t, uint32_t> &id2char) {
   vector<uint32_t> res;
@@ -103,6 +108,7 @@ bool is_space(uint32_t ch) {
 uint64_t int2comb(uint32_t a, uint32_t b) {
   return (static_cast<uint64_t >(a) << 32u) + b;
 }
+
 
 struct MergeCandidate {
   uint64_t count{0};
