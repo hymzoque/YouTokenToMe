@@ -215,7 +215,7 @@ if __name__ == "__main__":
         corpuses[lang] = prepare_data(zip_file, args.corpus_size)
 
 #    algorithms = [YOU_TOKEN_TO_ME, SENTENCE_PIECE, FAST_BPE, BPE_DEMO]
-    algorithms = [BPE_DEMO]
+    algorithms = [FAST_BPE]
 
     global_train = {}
     global_tokenization = {}
