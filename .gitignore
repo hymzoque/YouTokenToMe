@@ -115,3 +115,6 @@ CMakeLists.txt
 
 # mypy
 .mypy_cache/
+
+
+.DS_Store
