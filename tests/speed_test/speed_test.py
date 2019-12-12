@@ -11,9 +11,10 @@ MODEL_SUFFIX = ".model"
 YOU_TOKEN_TO_ME = "YouTokenToMe"
 SENTENCE_PIECE = "SentencePiece"
 FAST_BPE = "fastBPE"
-BPE_DEMO = "BPEDemo"
+BPE_PLUS = "BPEPLUS"
 
 PATH_TO_FASTBPE = "~/fastBPE/fast"
+PATH_TO_BPEPLUS = "python3 ~/bpedemo/py/bpeplus.py"
 
 
 class SentencePieceInterface:
@@ -62,11 +63,15 @@ class YouTokenToMeInterface:
         encode_command += f" < {str(path_in)} > {str(path_out)}"
         assert os.system(encode_command) == 0
 
-class BPEDemoInterface:
+class BPEPlusInterface:
     def train_from_file(self, file_path, vocab_size, model_file, _):
-        pass
+        train_command = f"{PATH_TO_BPEPLUS}"
+        train_command += f" {str(file_path)} {vocab_size} {model_file}"
+        assert os.system(train_command) == 0
     def encode_file(self, model_path, path_in, path_out, _):
-        pass
+        # same with fastBPE
+        encode_command = f"{PATH_TO_FASTBPE} applybpe {path_out} {path_in} {model_path}"
+        assert os.system(encode_command) == 0
 
 def get_bpe(impl_name):
     if impl_name == YOU_TOKEN_TO_ME:
@@ -75,8 +80,8 @@ def get_bpe(impl_name):
         return SentencePieceInterface()
     if impl_name == FAST_BPE:
         return FastBPEInterface()
-    if impl_name == BPE_DEMO:
-        return BPEDemoInterface()
+    if impl_name == BPE_PLUS:
+        return BPEPlusInterface()
     assert False
 
 
@@ -215,7 +220,7 @@ if __name__ == "__main__":
         corpuses[lang] = prepare_data(zip_file, args.corpus_size)
 
 #    algorithms = [YOU_TOKEN_TO_ME, SENTENCE_PIECE, FAST_BPE, BPE_DEMO]
-    algorithms = [FAST_BPE]
+    algorithms = [BPE_PLUS]
 
     global_train = {}
     global_tokenization = {}
