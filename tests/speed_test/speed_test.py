@@ -14,7 +14,7 @@ FAST_BPE = "fastBPE"
 BPE_PLUS = "BPEPLUS"
 
 PATH_TO_FASTBPE = "~/fastBPE/fast"
-PATH_TO_BPEPLUS = "python3 ~/bpedemo/py/bpeplus.py"
+PATH_TO_BPEPLUS = "~/bpedemo/cpp/bpeplus"
 
 
 class SentencePieceInterface:
@@ -66,7 +66,7 @@ class YouTokenToMeInterface:
 class BPEPlusInterface:
     def train_from_file(self, file_path, vocab_size, model_file, _):
         train_command = f"{PATH_TO_BPEPLUS}"
-        train_command += f" {str(file_path)} {vocab_size} {model_file}"
+        train_command += f" {vocab_size} {str(file_path)} > {model_file}"
         assert os.system(train_command) == 0
     def encode_file(self, model_path, path_in, path_out, _):
         # same with fastBPE
