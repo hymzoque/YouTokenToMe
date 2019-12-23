@@ -14,7 +14,7 @@ FAST_BPE = "fastBPE"
 BPE_PLUS = "BPEPLUS"
 
 PATH_TO_FASTBPE = "~/fastBPE/fast"
-PATH_TO_BPEPLUS = "python3 ~/bpedemo/py/bpeplus.py"
+PATH_TO_BPEPLUS = "~/pypy3.6-v7.2.0-linux64/bin/pypy3 ~/bpedemo/py/bpeplus.py"
 
 
 class SentencePieceInterface:
@@ -221,6 +221,7 @@ if __name__ == "__main__":
 
 #    algorithms = [YOU_TOKEN_TO_ME, SENTENCE_PIECE, FAST_BPE, BPE_DEMO]
     algorithms = [BPE_PLUS]
+#    algorithms = [FAST_BPE]
 
     global_train = {}
     global_tokenization = {}
